@@ -66,7 +66,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     try {
       await insertApplications(newApps)
     } catch (err) {
-      console.error('insertApplications failed:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      alert(`[写入失败 - insertApplications]\n${msg}`)
     }
   }
 
@@ -78,7 +79,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     try {
       await Promise.all([dbArchiveApplication(id), insertReview(review)])
     } catch (err) {
-      console.error('archiveApplication failed:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      alert(`[写入失败 - archiveApplication]\n${msg}`)
     }
   }
 
@@ -89,7 +91,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     try {
       await updateApplicationStatus(id, newStatusId)
     } catch (err) {
-      console.error('moveApplication failed:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      alert(`[写入失败 - moveApplication]\n${msg}`)
     }
   }
 
