@@ -133,7 +133,7 @@ export function BatchImportModal({ onClose }: { onClose: () => void }) {
     const toAdd: Application[] = items
       .filter((i) => i.selected)
       .map((item) => ({
-        id:          `imp_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        id:          crypto.randomUUID(),
         companyName: item.companyName,
         jobTitle:    item.jobTitle,
         statusId:    item.statusId,

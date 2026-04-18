@@ -63,7 +63,7 @@ export function KanbanPage() {
   ) => {
     if (!pendingApp) return
     const review: Review = {
-      id: `rv_${Date.now()}`,
+      id: crypto.randomUUID(),
       applicationId: pendingApp.id,
       companyName: pendingApp.companyName,
       jobTitle: pendingApp.jobTitle,
