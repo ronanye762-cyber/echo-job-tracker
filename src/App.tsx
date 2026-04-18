@@ -8,8 +8,19 @@ import { ReviewPage } from './pages/ReviewPage'
 import { BatchImportModal } from './components/batch/BatchImportModal'
 
 function AppContent() {
-  const { currentPage } = useApp()
+  const { currentPage, loading } = useApp()
   const [showBatchImport, setShowBatchImport] = useState(false)
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-slate-50">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm text-slate-400">加载数据中…</p>
+        </div>
+      </div>
+    )
+  }
 
   const renderPage = () => {
     switch (currentPage) {
